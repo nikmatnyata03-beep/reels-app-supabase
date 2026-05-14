@@ -22,10 +22,11 @@ export function BottomNav() {
   const [unreadCount, setUnreadCount] = useState(0)
 
   useEffect(() => {
-    if (currentUser) {
-      setUnreadCount(getTotalUnreadCount(currentUser.id))
-    }
-  }, [currentUser])
+  if (!currentUser) return
+  getConversations(currentUser.id).then((convs) => {
+    setUnreadCount(convs.reduce((sum, c) => sum + c.unreadCount, 0))
+  })
+}, [currentUser])
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-t border-border safe-area-pb">
