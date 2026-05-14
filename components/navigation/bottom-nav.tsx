@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Home, Search, PlusSquare, MessageCircle, User } from "lucide-react"
 import { useUser } from "@/components/providers/app-provider"
-import { getTotalUnreadCount } from "@/lib/store/message-store"
+import { getConversations } from "@/lib/store/message-store"
 import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 
